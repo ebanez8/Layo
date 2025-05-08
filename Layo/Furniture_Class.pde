@@ -16,7 +16,7 @@ class Furniture{
     this.is_selected = isSel;
   }
   void rotated(int rotation){}
-  void move_to(float x, float y){}
+  void move_to(float x2, float y2){}
   void resized(float widths, float heights){}
   void collides_with(Object Furniture){}
   //rotate(angle: int)
