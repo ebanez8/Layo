@@ -1,8 +1,8 @@
 class Room {
-  float width, height;         // Room size (in pixels or units)
-  ArrayList<Furniture> items;  // All furniture in the room
-  boolean showGrid;            // Grid toggle
-  float zoom;                  // Zoom factor
+  float width, height;     
+  ArrayList<Furniture> items; 
+  boolean showGrid;  
+  float zoom;
 
   Room(float w, float h) {
     width = w;
