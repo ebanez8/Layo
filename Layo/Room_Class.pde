@@ -1,7 +1,7 @@
 class Room {
-  float width, height;     
-  ArrayList<Furniture> items; 
-  boolean showGrid;  
+  float width, height;
+  ArrayList<Furniture> items;
+  boolean showGrid;
   float zoom;
 
   Room(float w, float h) {
@@ -39,11 +39,10 @@ class Room {
     fill(240);
     stroke(0);
     rect(0, 0, width, height);
-
+    
     if (showGrid) {
       drawGrid();
     }
-
     for (Furniture f : items) {
       f.drawFurniture();
     }
