@@ -1,7 +1,4 @@
 import g4p_controls.*;
-
-
-
 void setup(){
   createGUI();
   size(800, 800);
@@ -10,6 +7,4 @@ void setup(){
   
  
 }
-void draw(){
-  print("hi");
-}
+void draw(){}
