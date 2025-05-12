@@ -8,7 +8,7 @@ class LayoutManager {
   }
   
   boolean hasCollision(Furniture a, Furniture b) {
-    return !(a.x + a.width < b.x || a.x > b.x + b.width || a.y + a.height < b.y || a.y > b.y + b.height);
+    return !(a.x + a.widths < b.x || a.x > b.x + b.widths || a.y + a.heights < b.y || a.y > b.y + b.heights);
   }
   
   ArrayList<String> checkCollisions() {
@@ -18,7 +18,7 @@ class LayoutManager {
         Furniture a = room.items.get(i);
         Furniture b = room.items.get(j);
         if (hasCollision(a, b)) {
-          messages.add("Collision between " + a.name + " and " + b.name);
+          messages.add("Collision");
         }
       }
     }
@@ -36,11 +36,11 @@ class LayoutManager {
       for (int j = i + 1; j < room.items.size(); j++) {
         Furniture a = room.items.get(i);
         Furniture b = room.items.get(j);
-        float dx = (a.x + a.width / 2) - (b.x + b.width / 2);
-        float dy = (a.y + a.height / 2) - (b.y + b.height / 2);
+        float dx = (a.x + a.widths / 2) - (b.x + b.widths / 2);
+        float dy = (a.y + a.heights / 2) - (b.y + b.heights / 2);
         float dist = dist(0, 0, dx, dy);
         if (dist < minDistance) {
-          messages.add("Too little space between " + a.name + " and " + b.name);
+          messages.add("Too little space");
         }
       }
     }

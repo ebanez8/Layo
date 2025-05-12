@@ -59,16 +59,4 @@ class Room {
       line(0, y, width, y);
     }
   }
-
-  ArrayList<String> getCollisions() {
-    ArrayList<String> warnings = new ArrayList<String>();
-    for (int i = 0; i < items.size(); i++) {
-      for (int j = i + 1; j < items.size(); j++) {
-        if (items.get(i).intersects(items.get(j))) {
-          warnings.add("Collision between " + items.get(i).name + " and " + items.get(j).name);
-        }
-      }
-    }
-    return warnings;
-  }
 }

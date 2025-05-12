@@ -19,6 +19,7 @@ class Furniture{
   void move_to(float x2, float y2){}
   void resized(float widths, float heights){}
   void collides_with(Object Furniture){}
+  void drawFurniture(){}
   //rotate(angle: int)
 //move_to(x: float, y: float)
 //resize(width: float, height: float)
