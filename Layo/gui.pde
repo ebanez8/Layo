@@ -92,6 +92,7 @@ public void createGUI(){
   Room_X.setOpaque(false);
   Room_X.addEventHandler(this, "custom_slider1_change2");
   Room_Y = new GCustomSlider(gui, 273, 223, 100, 40, "grey_blue");
+  Room_Y.setShowValue(true);
   Room_Y.setLimits(0.5, 0.0, 800.0);
   Room_Y.setNumberFormat(G4P.DECIMAL, 2);
   Room_Y.setOpaque(false);
