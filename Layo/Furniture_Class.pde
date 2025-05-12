@@ -11,7 +11,7 @@ class Furniture{
     this.heights = h;
     this.x = x1;
     this.y = y1;
-    this.rotation = r;
+    this.rotation = r;s
     this.colors = s;
     this.is_selected = isSel;
   }
@@ -19,7 +19,9 @@ class Furniture{
   void move_to(float x2, float y2){}
   void resized(float widths, float heights){}
   void collides_with(Object Furniture){}
-  void drawFurniture(){}
+  void drawFurniture(){
+    
+  }
   //rotate(angle: int)
 //move_to(x: float, y: float)
 //resize(width: float, height: float)
