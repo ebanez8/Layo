@@ -38,9 +38,9 @@ public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE
   println("Rotate_Slider - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:Rotate_Slider:610432:
 
-public void custom_slider1_change2(GCustomSlider source, GEvent event) { //_CODE_:custom_slider1:797839:
+public void custom_slider1_change2(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
   println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:custom_slider1:797839:
+} //_CODE_:Room_X:797839:
 
 public void custom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
   println("Room_Y - GCustomSlider >> GEvent." + event + " @ " + millis());
@@ -81,15 +81,16 @@ public void createGUI(){
   Rotate_Slider.setNumberFormat(G4P.INTEGER, 0);
   Rotate_Slider.setOpaque(true);
   Rotate_Slider.addEventHandler(this, "custom_slider1_change1");
-  label1 = new GLabel(gui, 285, 109, 80, 20);
+  label1 = new GLabel(gui, 280, 77, 80, 20);
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("Rotation");
   label1.setOpaque(false);
-  custom_slider1 = new GCustomSlider(gui, 105, 227, 100, 40, "grey_blue");
-  custom_slider1.setLimits(0.5, 0.0, 800.0);
-  custom_slider1.setNumberFormat(G4P.DECIMAL, 2);
-  custom_slider1.setOpaque(false);
-  custom_slider1.addEventHandler(this, "custom_slider1_change2");
+  Room_X = new GCustomSlider(gui, 105, 227, 100, 40, "grey_blue");
+  Room_X.setShowValue(true);
+  Room_X.setLimits(0.5, 0.0, 800.0);
+  Room_X.setNumberFormat(G4P.DECIMAL, 2);
+  Room_X.setOpaque(false);
+  Room_X.addEventHandler(this, "custom_slider1_change2");
   Room_Y = new GCustomSlider(gui, 273, 223, 100, 40, "grey_blue");
   Room_Y.setLimits(0.5, 0.0, 800.0);
   Room_Y.setNumberFormat(G4P.DECIMAL, 2);
@@ -107,5 +108,5 @@ GDropList FurnitureList;
 GButton delete_button; 
 GCustomSlider Rotate_Slider; 
 GLabel label1; 
-GCustomSlider custom_slider1; 
+GCustomSlider Room_X; 
 GCustomSlider Room_Y; 
