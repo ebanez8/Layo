@@ -63,20 +63,3 @@ void mouseDragged() {
     selected.tryMove(c, r);
   }
 }
-
-
-
-void addFurniture(Furniture f, int mx, int my) {
-  // center furniture under mouse
-  int c = floor((mx - 1 - f.w*CELL/2) / CELL + 0.5);
-  int r = floor((my - 1 - f.h*CELL/2) / CELL + 0.5);
-  c = constrain(c, 0, COLS - f.w);
-  r = constrain(r, 0, ROWS - f.h);
-  if (f.place(c, r)) furnitureList.add(f);
-}
-
-void removeFurniture(Furniture f) {
-  f.clearOccupancy();
-  furnitureList.remove(f);
-  selected = null;
-}
