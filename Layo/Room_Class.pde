@@ -1,6 +1,6 @@
 class Room {
   float rwidth, rheight;
-  ArrayList<Furniture> items;
+  ArrayList<Furniture> items; // might not need this
   boolean showGrid;
   float zoom;
 

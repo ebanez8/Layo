@@ -11,6 +11,8 @@ Grid grid = new Grid(25,true);
 boolean[][] occupied; 
 int cols, rows;
 int tileSize = 25;
+int gridX, gridY;
+
 void setup(){
   createGUI();
   size(800, 800);
@@ -19,6 +21,7 @@ void setup(){
   rows = height / tileSize;
   occupied = new boolean [cols][rows];
 }
+
 void draw() {
   background(255);
   Room room = new Room(roomX, roomY);
@@ -38,10 +41,20 @@ void mousePressed() {
   if (gridX >= 0 && gridX < cols && gridY >= 0 && gridY < rows) {
     println("Mouse clicked on grid tile: [" + gridX + ", " + gridY + "]");
   }
+  
+  // Snapping furniture (its top left corner at the mouse x, y)
+  float snappedX = gridX * tileSize;
+  float snappedY = gridY * tileSize;
+
+  if (isFurnitureSelected) {
+    selectedFurniture.x = snappedX;
+    selectedFurniture.y = snappedY;
+    furnitureList.add(selectedFurniture);  
+    isFurnitureSelected = false;  
+  }
 
   for (Furniture f : furnitureList) {
     if (f.isClicked(mouseX, mouseY)) {
-      
       selected = f;
       offsetX = mouseX - f.x;
       offsetY = mouseY - f.y;
@@ -49,6 +62,7 @@ void mousePressed() {
     }
   }
 }
+
 
 void mouseDragged() {
   if (selected != null) {

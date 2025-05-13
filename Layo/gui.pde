@@ -29,30 +29,31 @@ public void button1_click2(GButton source, GEvent event) { //_CODE_:grid_button:
   println("grid_button - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:grid_button:697262:
 
-public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:FurnitureList:873779:
+boolean isFurnitureSelected = false;  
+Furniture selectedFurniture = null;  // To store the selected furniture
+
+void dropList1_click1(GDropList source, GEvent event) {
   println("FurnitureList - GDropList >> GEvent." + event + " @ " + millis());
 
   String selectedItem = source.getSelectedText();
 
   if (selectedItem == null) return;
 
-  Furniture newFurniture;
-  
   if (selectedItem.equals("Bed")) {
-    newFurniture = new Furniture(400f, 400f, 120f, 80f, 0, color(255, 0, 100), true);
+    selectedFurniture = new Furniture(0, 0, 120f, 80f, 0, color(255, 0, 100), true);
   } else if (selectedItem.equals("Couch")) {
-    newFurniture = new Furniture(400f, 400f, 150f, 70f, 0, color(100, 0, 255), true);
+    selectedFurniture = new Furniture(0, 0, 150f, 70f, 0, color(100, 0, 255), true);
   } else if (selectedItem.equals("Table")) {
-    newFurniture = new Furniture(400f, 400f, 100f, 100f, 0, color(0, 255, 50), true);
+    selectedFurniture = new Furniture(0, 0, 100f, 100f, 0, color(0, 255, 50), true);
   } else if (selectedItem.equals("Chair")) {
-    newFurniture = new Furniture(400f, 400f, 50f, 50f, 0, color(200, 100, 50), true);
+    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(200, 100, 50), true);
   } else if (selectedItem.equals("Carpet")) {
-    newFurniture = new Furniture(400f, 400f, 200f, 100f, 0, color(255, 200, 0), true);
+    selectedFurniture = new Furniture(0, 0, 200f, 100f, 0, color(255, 200, 0), true);
   } else {
     return; // Unknown item
   }
 
-  furnitureList.add(newFurniture);  // Add to list for drawing
+  isFurnitureSelected = true;  
 } //_CODE_:FurnitureList:873779:
 
 public void button1_click3(GButton source, GEvent event) { //_CODE_:delete_button:486369:
