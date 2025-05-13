@@ -19,9 +19,10 @@ void setup(){
 }
 void draw() {
   background(255);
-  
+  Room room = new Room(roomX, roomY);
   room.drawRoom();
-  grid.drawGrid();
+  if (draw_g){grid.drawGrid();}
+  
   for (Furniture f : furnitureList) {
     fill(f.col);
     f.drawFurniture();

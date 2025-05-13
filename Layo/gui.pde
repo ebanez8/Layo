@@ -23,7 +23,9 @@ public void button1_click1(GButton source, GEvent event) { //_CODE_:screenshot_b
 } //_CODE_:screenshot_button:805889:
 
 public void button1_click2(GButton source, GEvent event) { //_CODE_:grid_button:697262:
-  draw_g = false;
+  if (draw_g){draw_g = false;}
+  else{draw_g = true;}
+  
   println("grid_button - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:grid_button:697262:
 
