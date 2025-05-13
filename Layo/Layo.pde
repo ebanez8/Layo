@@ -1,5 +1,5 @@
 import g4p_controls.*;
-ArrayList<Furniture> furnitureUsed;
+ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
 
 
 void setup(){
@@ -10,5 +10,11 @@ void setup(){
   
  
 }
-void draw(){
+void draw() {
+  background(255);
+
+  for (Furniture f : furnitureList) {
+    fill(f.col);
+    f.drawFurniture();
+  }
 }

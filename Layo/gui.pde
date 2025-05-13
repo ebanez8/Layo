@@ -29,22 +29,27 @@ public void button1_click2(GButton source, GEvent event) { //_CODE_:grid_button:
 public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:FurnitureList:873779:
   println("FurnitureList - GDropList >> GEvent." + event + " @ " + millis());
 
-  // Get selected index and item text
-  int selectedIndex = source.getSelectedIndex();
   String selectedItem = source.getSelectedText();
 
-  // Check for specific furniture types
+  if (selectedItem == null) return;
+
+  Furniture newFurniture;
+
   if (selectedItem.equals("Bed")) {
-    println("You selected a Bed.");
+    newFurniture = new Furniture(400f, 400f, 120f, 80f, 0, color(255, 0, 100), true);
   } else if (selectedItem.equals("Couch")) {
-    println("You selected a Couch.");
+    newFurniture = new Furniture(400f, 400f, 150f, 70f, 0, color(100, 0, 255), true);
   } else if (selectedItem.equals("Table")) {
-    println("You selected a Table.");
+    newFurniture = new Furniture(400f, 400f, 100f, 100f, 0, color(0, 255, 50), true);
   } else if (selectedItem.equals("Chair")) {
-    println("You selected a Chair.");
+    newFurniture = new Furniture(400f, 400f, 50f, 50f, 0, color(200, 100, 50), true);
   } else if (selectedItem.equals("Carpet")) {
-    println("You selected a Carpet.");
-  } 
+    newFurniture = new Furniture(400f, 400f, 200f, 100f, 0, color(255, 200, 0), true);
+  } else {
+    return; // Unknown item
+  }
+
+  furnitureList.add(newFurniture);  // Add to list for drawing
 } //_CODE_:FurnitureList:873779:
 
 public void button1_click3(GButton source, GEvent event) { //_CODE_:delete_button:486369:
@@ -86,11 +91,11 @@ public void createGUI(){
   FurnitureList = new GDropList(gui, 160, 27, 90, 120, 5, 10);
   FurnitureList.setItems(loadStrings("list_873779"), 0);
   FurnitureList.addEventHandler(this, "dropList1_click1");
-  delete_button = new GButton(gui, 44, 125, 80, 30);
+  delete_button = new GButton(gui, 52, 61, 80, 30);
   delete_button.setText("Delete");
   delete_button.setLocalColorScheme(GCScheme.RED_SCHEME);
   delete_button.addEventHandler(this, "button1_click3");
-  Rotate_Slider = new GCustomSlider(gui, 279, 133, 100, 40, "grey_blue");
+  Rotate_Slider = new GCustomSlider(gui, 239, 194, 154, 56, "grey_blue");
   Rotate_Slider.setShowValue(true);
   Rotate_Slider.setLimits(1, 0, 270);
   Rotate_Slider.setNbrTicks(4);
@@ -98,17 +103,17 @@ public void createGUI(){
   Rotate_Slider.setNumberFormat(G4P.INTEGER, 0);
   Rotate_Slider.setOpaque(true);
   Rotate_Slider.addEventHandler(this, "custom_slider1_change1");
-  label1 = new GLabel(gui, 280, 77, 80, 20);
+  label1 = new GLabel(gui, 277, 174, 80, 20);
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("Rotation");
   label1.setOpaque(false);
-  Room_X = new GCustomSlider(gui, 105, 227, 100, 40, "grey_blue");
+  Room_X = new GCustomSlider(gui, 47, 187, 136, 40, "grey_blue");
   Room_X.setShowValue(true);
   Room_X.setLimits(800, 0, 1600);
   Room_X.setNumberFormat(G4P.INTEGER, 0);
   Room_X.setOpaque(false);
   Room_X.addEventHandler(this, "custom_slider1_change2");
-  Room_Y = new GCustomSlider(gui, 273, 223, 100, 40, "grey_blue");
+  Room_Y = new GCustomSlider(gui, 48, 229, 134, 40, "grey_blue");
   Room_Y.setShowValue(true);
   Room_Y.setLimits(800, 0, 1600);
   Room_Y.setNumberFormat(G4P.INTEGER, 0);
