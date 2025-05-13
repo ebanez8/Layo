@@ -6,14 +6,22 @@ float roomY = 600;
 ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
 Room room = new Room(roomX, roomY);
 Grid grid = new Grid(50,true);
-boolean[][] occupied; 
+
+int cols, rows;
+int tileSize = 50;
+boolean[][] occupied;
+
 
 void setup(){
   createGUI();
   size(800, 800);
   background(255);
-  occupied = new boolean [800/50][800/50];
+  cols = width / tileSize;
+  rows = height / tileSize;
+  occupied = new boolean[cols][rows];
 }
+
+
 void draw() {
   background(255);
   Room room = new Room(roomX, roomY);
@@ -23,5 +31,15 @@ void draw() {
   for (Furniture f : furnitureList) {
     fill(f.col);
     f.drawFurniture();
+  }
+}
+
+
+void mousePressed() {
+  int gridX = mouseX / tileSize;
+  int gridY = mouseY / tileSize;
+
+  if (gridX >= 0 && gridX < cols && gridY >= 0 && gridY < rows) {
+    println("Mouse clicked on grid tile: [" + gridX + ", " + gridY + "]");
   }
 }
