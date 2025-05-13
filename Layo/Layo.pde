@@ -1,5 +1,5 @@
 import g4p_controls.*;
-ArrayList<Furniture> furnitureUsed()
+ArrayList<Furniture> furnitureUsed;
 
 
 void setup(){
@@ -11,5 +11,4 @@ void setup(){
  
 }
 void draw(){
-  print("hi");
 }

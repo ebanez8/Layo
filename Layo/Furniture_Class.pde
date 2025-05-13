@@ -11,7 +11,7 @@ class Furniture{
     this.heights = h;
     this.x = x1;
     this.y = y1;
-    this.rotation = r;s
+    this.rotation = r;
     this.colors = s;
     this.is_selected = isSel;
   }
