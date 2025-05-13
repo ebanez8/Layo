@@ -34,7 +34,7 @@ public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:Furnitur
   if (selectedItem == null) return;
 
   Furniture newFurniture;
-
+  
   if (selectedItem.equals("Bed")) {
     newFurniture = new Furniture(400f, 400f, 120f, 80f, 0, color(255, 0, 100), true);
   } else if (selectedItem.equals("Couch")) {
@@ -107,18 +107,26 @@ public void createGUI(){
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("Rotation");
   label1.setOpaque(false);
-  Room_X = new GCustomSlider(gui, 47, 187, 136, 40, "grey_blue");
+  Room_X = new GCustomSlider(gui, 48, 186, 136, 40, "grey_blue");
   Room_X.setShowValue(true);
-  Room_X.setLimits(800, 0, 1600);
+  Room_X.setLimits(600, 0, 800);
   Room_X.setNumberFormat(G4P.INTEGER, 0);
   Room_X.setOpaque(false);
   Room_X.addEventHandler(this, "RoomX");
-  Room_Y = new GCustomSlider(gui, 49, 229, 134, 40, "grey_blue");
+  Room_Y = new GCustomSlider(gui, 49, 251, 134, 40, "grey_blue");
   Room_Y.setShowValue(true);
-  Room_Y.setLimits(800, 0, 1600);
+  Room_Y.setLimits(600, 0, 800);
   Room_Y.setNumberFormat(G4P.INTEGER, 0);
   Room_Y.setOpaque(false);
   Room_Y.addEventHandler(this, "RoomY");
+  label2 = new GLabel(gui, 72, 166, 80, 20);
+  label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label2.setText("Room X");
+  label2.setOpaque(false);
+  label3 = new GLabel(gui, 71, 231, 80, 20);
+  label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label3.setText("Room Y");
+  label3.setOpaque(false);
   gui.loop();
 }
 
@@ -133,3 +141,5 @@ GCustomSlider Rotate_Slider;
 GLabel label1; 
 GCustomSlider Room_X; 
 GCustomSlider Room_Y; 
+GLabel label2; 
+GLabel label3; 

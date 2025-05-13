@@ -1,6 +1,6 @@
 import g4p_controls.*;
-float roomX = 800;
-float roomY = 800;
+float roomX = 600;
+float roomY = 600;
 ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
 
 
@@ -17,7 +17,9 @@ void setup(){
 void draw() {
   background(255);
   Room room = new Room(roomX, roomY);
+  Grid grid = new Grid(50,true);
   room.drawRoom();
+  grid.drawGrid();
   for (Furniture f : furnitureList) {
     fill(f.col);
     f.drawFurniture();

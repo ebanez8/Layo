@@ -34,7 +34,9 @@ class Room {
   }
 
   void drawRoom() {
-    fill(240);
+    fill(175);
+    stroke(50);
+    strokeWeight(5);
     rect((width-rwidth)/2, (height-rheight)/2, rwidth, rheight);
     
     if (showGrid) {

@@ -8,6 +8,15 @@ class Grid{
   }
   
   void toggleVisibility() {}
-  void grawGrid(float roomWidth, float roomHeight){}
+  void drawGrid(){
+    stroke(0);
+    strokeWeight(0.1);
+    for(int i = 1; i <= int(width/cellSize); i++) {
+      line(i*cellSize, 0, i*cellSize, height);
+    }
+    for(int i = 1; i <= int(height/cellSize); i++) {
+      line(0, i*cellSize, width, i*cellSize);
+    }
+  }
   
 }

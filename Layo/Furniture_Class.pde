@@ -20,6 +20,7 @@ class Furniture{
   void resized(float widths, float heights){}
   void collides_with(Object Furniture){}
   void drawFurniture(){
+    noStroke();
     rect(x,y,widths,heights);
   }
   //rotate(angle: int)
