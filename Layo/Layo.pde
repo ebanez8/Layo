@@ -71,5 +71,17 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
+  if (selected != null) {
+    int gridX = (int)(selected.x / tileSize);
+    int gridY = (int)(selected.y / tileSize);
+    
+    // keeps furniture inside the room
+    // STILL NEED TO FIX THIS TO FIT CONSTRAINS OF THEROOM
+    //gridX = constrain(gridX, 0, cols - 1);
+    //gridY = constrain(gridY, 0, rows - 1);
+    selected.x = gridX * tileSize;
+    selected.y = gridY * tileSize;
+  }
+
   selected = null;
 }
