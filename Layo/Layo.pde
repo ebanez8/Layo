@@ -8,16 +8,13 @@ float offsetX, offsetY;
 ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
 Room room = new Room(roomX, roomY);
 Grid grid = new Grid(50,true);
-
+boolean[][] occupied; 
 
 void setup(){
   createGUI();
   size(800, 800);
   background(255);
-  
-  
-  
- 
+  occupied = new boolean [800/50][800/50];
 }
 void draw() {
   background(255);
