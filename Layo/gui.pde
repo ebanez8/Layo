@@ -28,6 +28,23 @@ public void button1_click2(GButton source, GEvent event) { //_CODE_:grid_button:
 
 public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:FurnitureList:873779:
   println("FurnitureList - GDropList >> GEvent." + event + " @ " + millis());
+
+  // Get selected index and item text
+  int selectedIndex = source.getSelectedIndex();
+  String selectedItem = source.getSelectedText();
+
+  // Check for specific furniture types
+  if (selectedItem.equals("Bed")) {
+    println("You selected a Bed.");
+  } else if (selectedItem.equals("Couch")) {
+    println("You selected a Couch.");
+  } else if (selectedItem.equals("Table")) {
+    println("You selected a Table.");
+  } else if (selectedItem.equals("Chair")) {
+    println("You selected a Chair.");
+  } else if (selectedItem.equals("Carpet")) {
+    println("You selected a Carpet.");
+  } 
 } //_CODE_:FurnitureList:873779:
 
 public void button1_click3(GButton source, GEvent event) { //_CODE_:delete_button:486369:
