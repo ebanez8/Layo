@@ -1,4 +1,6 @@
 import g4p_controls.*;
+import java.awt.Font;
+
 float roomX = 600;
 float roomY = 600;
 ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
