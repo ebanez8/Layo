@@ -56,16 +56,16 @@ public void button1_click3(GButton source, GEvent event) { //_CODE_:delete_butto
   println("delete_button - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:delete_button:486369:
 
-public void custom_slider1_change1(GCustomSlider source, GEvent event) { //_CODE_:Rotate_Slider:610432:
+public void Rotation(GCustomSlider source, GEvent event) { //_CODE_:Rotate_Slider:610432:
   println("Rotate_Slider - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:Rotate_Slider:610432:
 
-public void custom_slider1_change2(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
-  println("custom_slider1 - GCustomSlider >> GEvent." + event + " @ " + millis());
+public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
+  roomX = source.getValueF();
 } //_CODE_:Room_X:797839:
 
-public void custom_slider2_change1(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
-  println("Room_Y - GCustomSlider >> GEvent." + event + " @ " + millis());
+public void RoomY(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
+  roomY = source.getValueF();
 } //_CODE_:Room_Y:251960:
 
 
@@ -102,7 +102,7 @@ public void createGUI(){
   Rotate_Slider.setStickToTicks(true);
   Rotate_Slider.setNumberFormat(G4P.INTEGER, 0);
   Rotate_Slider.setOpaque(true);
-  Rotate_Slider.addEventHandler(this, "custom_slider1_change1");
+  Rotate_Slider.addEventHandler(this, "Rotation");
   label1 = new GLabel(gui, 277, 174, 80, 20);
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("Rotation");
@@ -112,13 +112,13 @@ public void createGUI(){
   Room_X.setLimits(800, 0, 1600);
   Room_X.setNumberFormat(G4P.INTEGER, 0);
   Room_X.setOpaque(false);
-  Room_X.addEventHandler(this, "custom_slider1_change2");
-  Room_Y = new GCustomSlider(gui, 48, 229, 134, 40, "grey_blue");
+  Room_X.addEventHandler(this, "RoomX");
+  Room_Y = new GCustomSlider(gui, 49, 229, 134, 40, "grey_blue");
   Room_Y.setShowValue(true);
   Room_Y.setLimits(800, 0, 1600);
   Room_Y.setNumberFormat(G4P.INTEGER, 0);
   Room_Y.setOpaque(false);
-  Room_Y.addEventHandler(this, "custom_slider2_change1");
+  Room_Y.addEventHandler(this, "RoomY");
   gui.loop();
 }
 

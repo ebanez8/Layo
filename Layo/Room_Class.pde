@@ -1,12 +1,12 @@
 class Room {
-  float width, height;
+  float rwidth, rheight;
   ArrayList<Furniture> items;
   boolean showGrid;
   float zoom;
 
   Room(float w, float h) {
-    width = w;
-    height = h;
+    rwidth = w;
+    rheight = h;
     items = new ArrayList<Furniture>();
     showGrid = false;
     zoom = 1.0;
@@ -25,8 +25,8 @@ class Room {
   }
 
   void resize(float newW, float newH) {
-    width = newW;
-    height = newH;
+    rwidth = newW;
+    rheight = newH;
   }
 
   void toggleGrid() {
@@ -34,11 +34,8 @@ class Room {
   }
 
   void drawRoom() {
-    pushMatrix();
-    scale(zoom);
     fill(240);
-    stroke(0);
-    rect(0, 0, width, height);
+    rect((width-rwidth)/2, (height-rheight)/2, rwidth, rheight);
     
     if (showGrid) {
       drawGrid();
@@ -46,8 +43,6 @@ class Room {
     for (Furniture f : items) {
       f.drawFurniture();
     }
-
-    popMatrix();
   }
 
   void drawGrid() {
