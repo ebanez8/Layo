@@ -16,17 +16,20 @@ class Furniture{
     this.is_selected = isSel;
   }
   void rotated(int rotation){}
-  void move_to(float x2, float y2){}
-  void resized(float widths, float heights){}
-  void collides_with(Object Furniture){}
   void drawFurniture(){
     noStroke();
     rect(x,y,widths,heights);
   }
-  //rotate(angle: int)
-//move_to(x: float, y: float)
-//resize(width: float, height: float)
-//collides_with(other: Furniture) -> bool
-
+  
+  boolean isClicked(float mx, float my) {
+    return (mx > x && mx < x + widths && my > y && my < y + heights);
+  }
+  
+  void moveTo(float newX, float newY) {
+    this.x = newX;
+    this.y = newY;
+  }
+  
+  
 
 }
