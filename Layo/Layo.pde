@@ -1,10 +1,11 @@
 import g4p_controls.*;
 import java.awt.Font;
-
+boolean draw_g = true;
 float roomX = 600;
 float roomY = 600;
 ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
-
+Room room = new Room(roomX, roomY);
+Grid grid = new Grid(50,true);
 
 
 void setup(){
@@ -18,8 +19,7 @@ void setup(){
 }
 void draw() {
   background(255);
-  Room room = new Room(roomX, roomY);
-  Grid grid = new Grid(50,true);
+  
   room.drawRoom();
   grid.drawGrid();
   for (Furniture f : furnitureList) {
