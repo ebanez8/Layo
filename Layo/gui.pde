@@ -40,9 +40,9 @@ void dropList1_click1(GDropList source, GEvent event) {
   if (selectedItem == null) return;
 
   if (selectedItem.equals("Bed")) {
-    selectedFurniture = new Furniture(0, 0, 120f, 80f, 0, color(255, 0, 100), true);
+    selectedFurniture = new Furniture(0, 0, 125f, 80f, 0, color(255, 0, 100), true);
   } else if (selectedItem.equals("Couch")) {
-    selectedFurniture = new Furniture(0, 0, 150f, 70f, 0, color(100, 0, 255), true);
+    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, color(100, 0, 255), true);
   } else if (selectedItem.equals("Table")) {
     selectedFurniture = new Furniture(0, 0, 100f, 100f, 0, color(0, 255, 50), true);
   } else if (selectedItem.equals("Chair")) {
