@@ -59,17 +59,16 @@ void dropList1_click1(GDropList source, GEvent event) {
 public void button1_click3(GButton source, GEvent event) { //_CODE_:delete_button:486369:
   println("delete_button - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:delete_button:486369:
-
 public void Rotation(GCustomSlider source, GEvent event) { //_CODE_:Rotate_Slider:610432:
+
   println("Rotate_Slider - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:Rotate_Slider:610432:
-
 public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
   roomX = source.getValueF();
 } //_CODE_:Room_X:797839:
 
 public void RoomY(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
-  roomY = source.getValueF();
+    roomY = source.getValueF();
 } //_CODE_:Room_Y:251960:
 
 
@@ -88,7 +87,7 @@ public void createGUI(){
   screenshot_button = new GButton(gui, 52, 14, 80, 30);
   screenshot_button.setText("Screenshot");
   screenshot_button.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
-  screenshot_button.addEventHandler(this, "button1_click1");
+  screenshot_button.addEventHandler(this, "screenshot_Button");
   grid_button = new GButton(gui, 275, 16, 108, 30);
   grid_button.setText("Toggle Grid");
   grid_button.addEventHandler(this, "button1_click2");
