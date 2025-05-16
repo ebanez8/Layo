@@ -3,6 +3,7 @@ import java.awt.Font;
 boolean draw_g = true;
 float roomX = 600;
 float roomY = 600;
+float rotation = 0;
 Furniture selected = null;
 float offsetX, offsetY;
 ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
@@ -34,6 +35,18 @@ void draw() {
   }
 }
 
+void keyPressed() {
+  if (key == 'r') {
+    for (Furniture f : furnitureList) {
+      if (selected == f) {
+        float nWidth = f.widths;
+        f.widths = -f.heights;
+        f.heights = nWidth;
+      }
+    }
+  }
+}
+
 void mousePressed() {
   int gridX = mouseX / tileSize;
   int gridY = mouseY / tileSize;
@@ -62,7 +75,6 @@ void mousePressed() {
     }
   }
 }
-
 
 void mouseDragged() {
   if (selected != null) {
