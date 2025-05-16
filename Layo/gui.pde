@@ -61,9 +61,7 @@ public void button1_click3(GButton source, GEvent event) { //_CODE_:delete_butto
   if(delete_bool == false){delete_bool = true;print(true);}
   else if (delete_bool){delete_bool = false;}
 } //_CODE_:delete_button:486369:
-public void Rotation(GCustomSlider source, GEvent event) { //_CODE_:Rotate_Slider:610432:
-  rotation = source.getValueF();
-} //_CODE_:Rotate_Slider:610432:
+
 public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
   roomX = source.getValueF();
 } //_CODE_:Room_X:797839:
