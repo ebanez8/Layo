@@ -1,7 +1,7 @@
 // TODO
 // make a min room width/height
 // if room resized - del furniture outside new room
-
+LayoutManager layoutManager;
 import g4p_controls.*;
 import java.awt.Font;
 boolean delete_bool = false;
@@ -21,6 +21,7 @@ int gridX, gridY;
 
 void setup(){
   createGUI();
+  layoutManager = new LayoutManager(room, tileSize);
   size(800, 800);
   background(255);
   cols = width / tileSize;
@@ -36,6 +37,24 @@ void draw() {
   
   for (Furniture f : furnitureList) {
     fill(f.col);
+    f.drawFurniture();
+  }
+  for (Furniture f : furnitureList) {
+    //check for collisions
+    boolean hasCollision = false;
+    for (Furniture other : furnitureList) {
+      if (f != other && layoutManager.hasCollision(f, other)) {
+        hasCollision = true;
+        break;
+      }
+    }
+    
+    //set color based on collision
+    if (hasCollision && f != selected) {
+      fill(255, 0, 0, 200); 
+    } else {
+      fill(f.col);
+    }
     f.drawFurniture();
   }
 }
@@ -91,9 +110,12 @@ void mouseDragged() {
 
 void mouseReleased() {
   if (selected != null) {
+    // Store original position before snapping
+    float originalX = selected.x;
+    float originalY = selected.y;
+    
     int gridX = (int)(selected.x / tileSize);
     int gridY = (int)(selected.y / tileSize);
-  
     
     // keeps furniture inside the room
     gridX = constrain(gridX, 0, cols - 1);
@@ -101,11 +123,26 @@ void mouseReleased() {
     
     selected.x = gridX * tileSize;
     selected.y = gridY * tileSize;
+    
+    // Check for collisions after snapping to grid
+    boolean hasCollision = false;
+    for (Furniture f : furnitureList) {
+      if (f != selected && layoutManager.hasCollision(selected, f)) {
+        hasCollision = true;
+        break;
+      }
+    }
+    
+    // If collision detected after release, move back to original position
+    if (hasCollision) {
+      selected.x = originalX;
+      selected.y = originalY;
+      println("Cannot place furniture: collision detected");
+    }
   }
-
+  
   selected = null;
 }
-
 // made a helper function to check if furniture is in room
 boolean isInsideRoom(float x, float y, float w, float h) {
   float roomLeft = (width - room.rwidth) / 2;
