@@ -66,10 +66,12 @@ public void Rotation(GCustomSlider source, GEvent event) { //_CODE_:Rotate_Slide
 
 public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
   roomX = source.getValueF();
+  room.resize(roomX, roomY);
 } //_CODE_:Room_X:797839:
 
 public void RoomY(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
   roomY = source.getValueF();
+  room.resize(roomX, roomY);
 } //_CODE_:Room_Y:251960:
 
 

@@ -20,11 +20,11 @@ void setup(){
   cols = width / tileSize;
   rows = height / tileSize;
   occupied = new boolean [cols][rows];
+  room = new Room(roomX, roomY);
 }
 
 void draw() {
   background(255);
-  Room room = new Room(roomX, roomY);
   room.drawRoom();
   if (draw_g){grid.drawGrid();}
   
@@ -74,11 +74,12 @@ void mouseReleased() {
   if (selected != null) {
     int gridX = (int)(selected.x / tileSize);
     int gridY = (int)(selected.y / tileSize);
+  
     
     // keeps furniture inside the room
-    // STILL NEED TO FIX THIS TO FIT CONSTRAINS OF THEROOM
-    //gridX = constrain(gridX, 0, cols - 1);
-    //gridY = constrain(gridY, 0, rows - 1);
+    gridX = constrain(gridX, 0, cols - 1);
+    gridY = constrain(gridY, 0, rows - 1);
+    
     selected.x = gridX * tileSize;
     selected.y = gridY * tileSize;
   }

@@ -25,9 +25,22 @@ class Furniture{
     return (mx > x && mx < x + widths && my > y && my < y + heights);
   }
   
+  void constrainToRoom(Room room) {
+    float roomX = (width - room.rwidth) / 2;
+    float roomY = (height - room.rheight) / 2;
+
+    // Constrain left and top edges
+    if (x < roomX) x = roomX;
+    if (y < roomY) y = roomY;
+
+    // Constrain right and bottom edges
+    if (x + widths > roomX + room.rwidth) x = roomX + room.rwidth - widths;
+    if (y + heights > roomY + room.rheight) y = roomY + room.rheight - heights;
+  }
   void moveTo(float newX, float newY) {
     this.x = newX;
     this.y = newY;
+    constrainToRoom(room);
   }
   
   

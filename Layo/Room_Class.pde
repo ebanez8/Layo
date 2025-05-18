@@ -42,9 +42,6 @@ class Room {
     if (showGrid) {
       drawGrid();
     }
-    for (Furniture f : items) {
-      f.drawFurniture();
-    }
   }
 
   void drawGrid() {
