@@ -46,18 +46,21 @@ void mousePressed() {
   int gridX = mouseX / tileSize;
   int gridY = mouseY / tileSize;
   
-  
-  // Snapping furniture (its top left corner at the mouse x, y)
   float snappedX = gridX * tileSize;
   float snappedY = gridY * tileSize;
 
   if (isFurnitureSelected) {
-    selectedFurniture.x = snappedX;
-    selectedFurniture.y = snappedY;
+    float fw = selectedFurniture.widths;
+    float fh = selectedFurniture.heights;
     
-    furnitureList.add(selectedFurniture);  
-    
-    isFurnitureSelected = false;  
+    if (isInsideRoom(snappedX, snappedY, fw, fh)) {
+      selectedFurniture.x = snappedX;
+      selectedFurniture.y = snappedY;
+      furnitureList.add(selectedFurniture);  
+      isFurnitureSelected = false;  
+    } else {
+      println("Placement outside room — click another location in the room.");
+    }
   }
 
   for (Furniture f : furnitureList) {
@@ -97,4 +100,14 @@ void mouseReleased() {
   }
 
   selected = null;
+}
+
+// made a helper function to check if furniture is in room
+boolean isInsideRoom(float x, float y, float w, float h) {
+  float roomLeft = (width - room.rwidth) / 2;
+  float roomTop = (height - room.rheight) / 2;
+  float roomRight = roomLeft + room.rwidth;
+  float roomBottom = roomTop + room.rheight;
+
+  return x >= roomLeft && y >= roomTop && (x + w) <= roomRight && (y + h) <= roomBottom;
 }
