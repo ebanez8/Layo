@@ -29,51 +29,46 @@ public void button1_click2(GButton source, GEvent event) { //_CODE_:grid_button:
   println("grid_button - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:grid_button:697262:
 
-boolean isFurnitureSelected = false;  
-Furniture selectedFurniture = null;  // To store the selected furniture
-
-void dropList1_click1(GDropList source, GEvent event) {
+public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:FurnitureList:873779:
   println("FurnitureList - GDropList >> GEvent." + event + " @ " + millis());
 
   String selectedItem = source.getSelectedText();
 
   if (selectedItem == null) return;
 
+  Furniture newFurniture;
+  
   if (selectedItem.equals("Bed")) {
-    selectedFurniture = new Furniture(0, 0, 125f, 80f, 0, color(255, 0, 100), true);
+    newFurniture = new Furniture(400f, 400f, 120f, 80f, 0, color(255, 0, 100), true);
   } else if (selectedItem.equals("Couch")) {
-    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, color(100, 0, 255), true);
+    newFurniture = new Furniture(400f, 400f, 150f, 70f, 0, color(100, 0, 255), true);
   } else if (selectedItem.equals("Table")) {
-    selectedFurniture = new Furniture(0, 0, 100f, 100f, 0, color(0, 255, 50), true);
+    newFurniture = new Furniture(400f, 400f, 100f, 100f, 0, color(0, 255, 50), true);
   } else if (selectedItem.equals("Chair")) {
-    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(200, 100, 50), true);
+    newFurniture = new Furniture(400f, 400f, 50f, 50f, 0, color(200, 100, 50), true);
   } else if (selectedItem.equals("Carpet")) {
-    selectedFurniture = new Furniture(0, 0, 200f, 100f, 0, color(255, 200, 0), true);
+    newFurniture = new Furniture(400f, 400f, 200f, 100f, 0, color(255, 200, 0), true);
   } else {
     return; // Unknown item
   }
 
-  isFurnitureSelected = true;  
+  furnitureList.add(newFurniture);  // Add to list for drawing
 } //_CODE_:FurnitureList:873779:
 
 public void button1_click3(GButton source, GEvent event) { //_CODE_:delete_button:486369:
   println("delete_button - GButton >> GEvent." + event + " @ " + millis());
-  if(delete_bool == false){delete_bool = true;print(true);}
-  else if (delete_bool){delete_bool = false;}
-  
 } //_CODE_:delete_button:486369:
+
 public void Rotation(GCustomSlider source, GEvent event) { //_CODE_:Rotate_Slider:610432:
   println("Rotate_Slider - GCustomSlider >> GEvent." + event + " @ " + millis());
 } //_CODE_:Rotate_Slider:610432:
 
 public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
   roomX = source.getValueF();
-  room.resize(roomX, roomY);
 } //_CODE_:Room_X:797839:
 
 public void RoomY(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
   roomY = source.getValueF();
-  room.resize(roomX, roomY);
 } //_CODE_:Room_Y:251960:
 
 
@@ -92,7 +87,7 @@ public void createGUI(){
   screenshot_button = new GButton(gui, 52, 14, 80, 30);
   screenshot_button.setText("Screenshot");
   screenshot_button.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
-  screenshot_button.addEventHandler(this, "screenshot_Button");
+  screenshot_button.addEventHandler(this, "button1_click1");
   grid_button = new GButton(gui, 275, 16, 108, 30);
   grid_button.setText("Toggle Grid");
   grid_button.addEventHandler(this, "button1_click2");
@@ -115,18 +110,17 @@ public void createGUI(){
   label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label1.setText("Rotation");
   label1.setOpaque(false);
-  Room_X = new GCustomSlider(gui, 48, 186, 136, 44, "grey_blue");
+  Room_X = new GCustomSlider(gui, 48, 186, 136, 40, "grey_blue");
   Room_X.setShowValue(true);
   Room_X.setLimits(600, 0, 800);
-  Room_X.setNbrTicks(17);
-  Room_X.setStickToTicks(true);
+  Room_X.setNbrTicks(3);
   Room_X.setNumberFormat(G4P.INTEGER, 0);
   Room_X.setOpaque(false);
   Room_X.addEventHandler(this, "RoomX");
-  Room_Y = new GCustomSlider(gui, 49, 256, 134, 45, "grey_blue");
+  Room_Y = new GCustomSlider(gui, 49, 251, 134, 40, "grey_blue");
   Room_Y.setShowValue(true);
   Room_Y.setLimits(600, 0, 800);
-  Room_Y.setNbrTicks(17);
+  Room_Y.setNbrTicks(16);
   Room_Y.setStickToTicks(true);
   Room_Y.setNumberFormat(G4P.INTEGER, 0);
   Room_Y.setOpaque(false);
@@ -135,7 +129,7 @@ public void createGUI(){
   label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label2.setText("Room X");
   label2.setOpaque(false);
-  label3 = new GLabel(gui, 71, 235, 80, 20);
+  label3 = new GLabel(gui, 71, 231, 80, 20);
   label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label3.setText("Room Y");
   label3.setOpaque(false);

@@ -1,8 +1,10 @@
 import g4p_controls.*;
 import java.awt.Font;
+boolean delete_bool = false;
 boolean draw_g = true;
 float roomX = 600;
 float roomY = 600;
+float rotation = 0;
 Furniture selected = null;
 float offsetX, offsetY;
 ArrayList<Furniture> furnitureList = new ArrayList<Furniture>();
@@ -34,13 +36,22 @@ void draw() {
   }
 }
 
+void keyPressed() {
+  if (key == 'r') {
+    for (Furniture f : furnitureList) {
+      if (selected == f) {
+        float nWidth = f.widths;
+        f.widths = -f.heights;
+        f.heights = nWidth;
+      }
+    }
+  }
+}
+
 void mousePressed() {
   int gridX = mouseX / tileSize;
   int gridY = mouseY / tileSize;
   
-  if (gridX >= 0 && gridX < cols && gridY >= 0 && gridY < rows) {
-    println("Mouse clicked on grid tile: [" + gridX + ", " + gridY + "]");
-  }
   
   // Snapping furniture (its top left corner at the mouse x, y)
   float snappedX = gridX * tileSize;
@@ -49,12 +60,20 @@ void mousePressed() {
   if (isFurnitureSelected) {
     selectedFurniture.x = snappedX;
     selectedFurniture.y = snappedY;
+    
     furnitureList.add(selectedFurniture);  
+    
     isFurnitureSelected = false;  
   }
 
   for (Furniture f : furnitureList) {
     if (f.isClicked(mouseX, mouseY)) {
+      if (delete_bool == true){
+        print("deleted");
+        furnitureList.remove(f);
+        delete_bool = false;
+        break;
+      }
       selected = f;
       offsetX = mouseX - f.x;
       offsetY = mouseY - f.y;
@@ -62,7 +81,6 @@ void mousePressed() {
     }
   }
 }
-
 
 void mouseDragged() {
   if (selected != null) {
