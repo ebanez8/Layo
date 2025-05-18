@@ -16,7 +16,23 @@ class Furniture{
     this.col = c;
     this.is_selected = isSel;
   }
-
+  void rotate() {
+    float centerX = x + widths / 2;
+    float centerY = y + heights / 2;
+  
+    // Swap widths and heights 
+    float temp = widths;
+    widths = heights;
+    heights = temp;
+  
+    // Re-center after swap
+    x = centerX - widths / 2;
+    y = centerY - heights / 2;
+  
+    //Keep track of rotation angle (0, 90, 180, 270)
+    rotation = (rotation + 90) % 360;
+    constrainToRoom(room);
+  }
   void drawFurniture(){
     noStroke();
     rect(x,y,widths,heights);

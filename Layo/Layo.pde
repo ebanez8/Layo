@@ -37,14 +37,8 @@ void draw() {
 }
 
 void keyPressed() {
-  if (key == 'r') {
-    for (Furniture f : furnitureList) {
-      if (selected == f) {
-        float nWidth = f.widths;
-        f.widths = -f.heights;
-        f.heights = nWidth;
-      }
-    }
+  if (key == 'r' && selected != null) {
+    selected.rotate();
   }
 }
 
