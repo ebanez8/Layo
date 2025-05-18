@@ -1,3 +1,7 @@
+// TODO
+// make a min room width/height
+// if room resized - del furniture outside new room
+
 import g4p_controls.*;
 import java.awt.Font;
 boolean delete_bool = false;
