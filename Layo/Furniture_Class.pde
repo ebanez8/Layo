@@ -6,6 +6,7 @@ class Furniture{
   int rotation;
   color col;
   boolean is_selected;
+
   Furniture(float x1, float y1, float w, float h, int r, color c, boolean isSel){
     this.x = x1;
     this.y = y1;
@@ -15,7 +16,7 @@ class Furniture{
     this.col = c;
     this.is_selected = isSel;
   }
-  void rotated(int rotation){}
+
   void drawFurniture(){
     noStroke();
     rect(x,y,widths,heights);
