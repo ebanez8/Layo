@@ -8,7 +8,7 @@ class LayoutManager {
   }
   
   boolean hasCollision(Furniture a, Furniture b) {
-    return !(a.x + a.widths < b.x || a.x > b.x + b.widths || a.y + a.heights < b.y || a.y > b.y + b.heights);
+    return !(a.x + a.widths <= b.x || a.x >= b.x + b.widths || a.y + a.heights <= b.y || a.y >= b.y + b.heights);
   }
   
   ArrayList<String> checkCollisions() {
