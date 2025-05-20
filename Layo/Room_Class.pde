@@ -54,4 +54,115 @@ class Room {
       line(0, y, width, y);
     }
   }
+  void saveToFile(String filename) {
+
+    PrintWriter output = createWriter("data/" + filename + ".txt");
+    // Write room dimensions
+  
+    output.println(rwidth + "," + rheight);
+  
+  
+    // Write furniture count
+    output.println(items.size());
+    // Write each furniture item
+  
+    for (Furniture f : items) {
+      String type = "";
+      if (f.img == imgTable) type = "Table";
+  
+      else if (f.img == imgTBed) type = "TBed";
+  
+      else if (f.img == imgChair) type = "Chair";
+  
+      else if (f.img == imgCouch) type = "Couch";
+  
+      else if (f.img == imgSBed) type = "SBed";
+  
+      output.println(type + "," + f.x + "," + f.y + "," + f.widths + "," + f.heights + "," + f.rotation);
+  
+    }
+  
+  
+    output.close();
+  }
+  void loadFromFile(String filename) {
+
+    String[] lines = loadStrings("data/" + filename + ".txt");
+  
+    if (lines == null || lines.length < 2) return;
+  
+    
+  
+    // Read room dimensions
+  
+    String[] roomDims = split(lines[0], ',');
+  
+    rwidth = float(roomDims[0]);
+  
+    rheight = float(roomDims[1]);
+  
+    
+  
+    // Clear existing furniture
+  
+    items.clear();
+  
+    
+  
+    // Read furniture count
+  
+    int count = int(lines[1]);
+  
+    
+  
+    // Read each furniture item
+  
+    for (int i = 0; i < count && i + 2 < lines.length; i++) {
+  
+      String[] parts = split(lines[i + 2], ',');
+  
+      if (parts.length < 6) continue;
+  
+      
+  
+      String type = parts[0];
+  
+      float x = float(parts[1]);
+  
+      float y = float(parts[2]);
+  
+      float w = float(parts[3]);
+  
+      float h = float(parts[4]);
+  
+      int rot = int(parts[5]);
+  
+      
+  
+      // Get image based on type
+  
+      PImage img = null;
+  
+      if (type.equals("Table")) img = imgTable;
+  
+      else if (type.equals("TBed")) img = imgTBed;
+  
+      else if (type.equals("Chair")) img = imgChair;
+  
+      else if (type.equals("Couch")) img = imgCouch;
+  
+      else if (type.equals("SBed")) img = imgSBed;
+  
+      
+  
+      if (img != null) {
+  
+        items.add(new Furniture(x, y, w, h, rot, color(200), false, img));
+  
+      }
+  
+    }
+  
+  }
+
 }
