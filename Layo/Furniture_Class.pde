@@ -6,8 +6,9 @@ class Furniture{
   int rotation;
   color col;
   boolean is_selected;
-
-  Furniture(float x1, float y1, float w, float h, int r, color c, boolean isSel){
+  PImage img;
+  
+  Furniture(float x1, float y1, float w, float h, int r, color c, boolean isSel, PImage img){
     this.x = x1;
     this.y = y1;
     this.widths =w;
@@ -15,27 +16,54 @@ class Furniture{
     this.rotation = r;
     this.col = c;
     this.is_selected = isSel;
+    this.img = img;
   }
-  void rotate() {
+  void rotateF() {
+    // Rotate angle
+    rotation = (rotation + 90) % 360;
+  
+    // Compute center before changing size
     float centerX = x + widths / 2;
     float centerY = y + heights / 2;
   
-    // Swap widths and heights 
+    // Swap width and height
     float temp = widths;
     widths = heights;
     heights = temp;
   
-    // Re-center after swap
+    // Recalculate x, y to keep object centered
     x = centerX - widths / 2;
     y = centerY - heights / 2;
-  
-    //Keep track of rotation angle (0, 90, 180, 270)
-    rotation = (rotation + 90) % 360;
-    constrainToRoom(room);
   }
-  void drawFurniture(){
-    noStroke();
-    rect(x,y,widths,heights);
+  
+  void drawFurniture() {
+    stroke(0);
+    strokeWeight(0);
+    if (draw_g){strokeWeight(5);}
+    pushMatrix();
+    translate(x + widths / 2, y + heights / 2);
+    rotate(radians(rotation));
+    
+    imageMode(CENTER);
+    if (rotation == 0 || rotation == 180 || rotation == 360) {
+      image(img, 0, 0, widths, heights);
+    } else {
+      image(img, 0, 0, heights, widths);
+    }
+    
+    if (draw_g) {
+      noFill();
+      stroke(0);
+      strokeWeight(1);
+      rectMode(CENTER);
+      if (rotation == 0 || rotation == 180 || rotation == 360) {
+        rect(0, 0, widths, heights);
+      } else {
+        rect(0, 0, heights, widths);
+      }
+    }
+  
+    popMatrix();
   }
   
   boolean isClicked(float mx, float my) {
