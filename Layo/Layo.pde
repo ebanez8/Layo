@@ -43,11 +43,11 @@ void draw() {
   if (draw_g){grid.drawGrid();}
   
   for (Furniture f : furnitureList) {
-    fill(f.col);
     f.drawFurniture();
   }
+  
+  // Draw red outline on top of furniture if colliding
   for (Furniture f : furnitureList) {
-    //check for collisions
     boolean hasCollision = false;
     for (Furniture other : furnitureList) {
       if (f != other && layoutManager.hasCollision(f, other)) {
@@ -55,14 +55,16 @@ void draw() {
         break;
       }
     }
-    
-    //set color based on collision
+  
     if (hasCollision && f != selected) {
-      fill(255, 0, 0, 200); 
-    } else {
-      fill(f.col);
+      pushMatrix();
+      stroke(255, 0, 0);
+      strokeWeight(3);
+      noFill();
+      rectMode(CORNER);
+      rect(f.x, f.y, f.widths, f.heights);
+      popMatrix();
     }
-    f.drawFurniture();
   }
 }
 

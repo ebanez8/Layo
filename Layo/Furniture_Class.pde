@@ -37,6 +37,7 @@ class Furniture{
   }
   
   void drawFurniture() {
+    noFill();
     stroke(0);
     strokeWeight(0);
     if (draw_g){strokeWeight(5);}
@@ -52,7 +53,6 @@ class Furniture{
     }
     
     if (draw_g) {
-      noFill();
       stroke(0);
       strokeWeight(1);
       rectMode(CENTER);
@@ -61,6 +61,7 @@ class Furniture{
       } else {
         rect(0, 0, heights, widths);
       }
+      
     }
   
     popMatrix();
