@@ -7,7 +7,6 @@ class Grid{
     this.visible = v;
   }
   
-  void toggleVisibility() {}
   void drawGrid(){
     stroke(0);
     strokeWeight(0.1);
@@ -17,6 +16,5 @@ class Grid{
     for(int i = 1; i <= int(height/cellSize); i++) {
       line(0, i*cellSize, width, i*cellSize);
     }
-  }
-  
+  }  
 }

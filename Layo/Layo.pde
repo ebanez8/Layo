@@ -6,6 +6,7 @@ boolean delete_bool = false;
 boolean draw_g = true;
 float roomX = 600;
 float roomY = 600;
+float roomArea;
 float rotation = 0;
 Furniture selected = null;
 float offsetX, offsetY;
@@ -81,6 +82,15 @@ void mousePressed() {
       selectedFurniture.y = snappedY;
       furnitureList.add(selectedFurniture);  
       isFurnitureSelected = false;  
+      
+      float emptySpace = calculateEmptySpace();
+      float emptyPercentage = (emptySpace / roomArea) * 100;
+      
+      if (emptyPercentage < 30) {  
+        println("Too little empty space left in the room! Only " + nf(emptyPercentage, 0, 1) + "% remains.");
+      }
+      
+      
     } else {
       println("Placement outside room — click another location in the room.");
     }
@@ -160,4 +170,15 @@ void checkOutsideRoom() {
       furnitureList.remove(i);
     }
   }
+}
+
+float calculateEmptySpace() {
+  roomArea = (room.rwidth / tileSize) * (room.rheight / tileSize);
+  float furnitureArea = 0;
+
+  for (Furniture f : furnitureList) {
+    furnitureArea += (f.widths / tileSize) * (f.heights / tileSize);
+  }
+
+  return roomArea - furnitureArea;
 }
