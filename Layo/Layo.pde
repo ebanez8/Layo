@@ -1,6 +1,4 @@
 // TODO
-// make a min room width/height
-// if room resized - del furniture outside new room
 LayoutManager layoutManager;
 import g4p_controls.*;
 import java.awt.Font;
@@ -18,8 +16,11 @@ boolean[][] occupied;
 int cols, rows;
 int tileSize = 25;
 int gridX, gridY;
+boolean isFurnitureSelected = false;  
+Furniture selectedFurniture = null;  // To store the selected furniture
 
 void setup(){
+  room = new Room(roomX, roomY);
   createGUI();
   layoutManager = new LayoutManager(room, tileSize);
   size(800, 800);
@@ -27,7 +28,6 @@ void setup(){
   cols = width / tileSize;
   rows = height / tileSize;
   occupied = new boolean [cols][rows];
-  room = new Room(roomX, roomY);
 }
 
 void draw() {
@@ -151,4 +151,13 @@ boolean isInsideRoom(float x, float y, float w, float h) {
   float roomBottom = roomTop + room.rheight;
 
   return x >= roomLeft && y >= roomTop && (x + w) <= roomRight && (y + h) <= roomBottom;
+}
+
+void checkOutsideRoom() {
+  for (int i = 0; i < furnitureList.size(); i--) {
+    Furniture f = furnitureList.get(i);
+    if (!isInsideRoom(f.x, f.y, f.widths, f.heights)) {
+      furnitureList.remove(i);
+    }
+  }
 }
