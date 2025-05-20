@@ -18,6 +18,7 @@ int tileSize = 25;
 int gridX, gridY;
 boolean isFurnitureSelected = false;  
 Furniture selectedFurniture = null;  // To store the selected furniture
+PImage imgTable, imgTBed, imgChair, imgCouch, imgSBed;
 
 void setup(){
   room = new Room(roomX, roomY);
@@ -28,6 +29,11 @@ void setup(){
   cols = width / tileSize;
   rows = height / tileSize;
   occupied = new boolean [cols][rows];
+  imgTable = loadImage("Table.png");
+  imgTBed = loadImage("TBed.png");
+  imgChair = loadImage("Chair.png");
+  imgCouch = loadImage("Couch.png");
+  imgSBed = loadImage("SBed.png");
 }
 
 void draw() {
@@ -61,7 +67,7 @@ void draw() {
 
 void keyPressed() {
   if (key == 'r' && selected != null) {
-    selected.rotate();
+    selected.rotateF();
   }
 }
 

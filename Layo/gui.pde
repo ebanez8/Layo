@@ -36,16 +36,16 @@ public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:Furnitur
 
   if (selectedItem == null) return;
 
-  if (selectedItem.equals("Bed")) {
-    selectedFurniture = new Furniture(0, 0, 125f, 80f, 0, color(255, 0, 100), true);
+  if (selectedItem.equals("TBed")) {
+    selectedFurniture = new Furniture(0, 0, 125f, 125f, 0, color(255, 0, 100), true,imgTBed);
   } else if (selectedItem.equals("Couch")) {
-    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, color(100, 0, 255), true);
+    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, color(100, 0, 255), true, imgCouch);
   } else if (selectedItem.equals("Table")) {
-    selectedFurniture = new Furniture(0, 0, 100f, 100f, 0, color(0, 255, 50), true);
+    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, color(0, 255, 50), true, imgTable);
   } else if (selectedItem.equals("Chair")) {
-    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(200, 100, 50), true);
-  } else if (selectedItem.equals("Carpet")) {
-    selectedFurniture = new Furniture(0, 0, 200f, 100f, 0, color(255, 200, 0), true);
+    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(200, 100, 50), true, imgChair);
+  } else if (selectedItem.equals("SBed")) {
+    selectedFurniture = new Furniture(0, 0, 75f, 125f, 0, color(255, 200, 0), true, imgSBed);
   } else {
     return; // Unknown item
   }
