@@ -34,6 +34,8 @@ class Furniture{
     // Recalculate x, y to keep object centered
     x = centerX - widths / 2;
     y = centerY - heights / 2;
+    
+    constrainToRoom(room);
   }
   
   void drawFurniture() {
