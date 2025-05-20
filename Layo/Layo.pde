@@ -190,3 +190,29 @@ float calculateEmptySpace() {
 
   return roomArea - furnitureArea;
 }
+
+void saveLayout(String filename) {
+
+  room.items = new ArrayList<Furniture>(furnitureList);
+
+  room.saveToFile(filename);
+
+}
+
+// Load a layout
+
+void loadLayout(String filename) {
+
+  room.loadFromFile(filename);
+
+  furnitureList = new ArrayList<Furniture>(room.items);
+
+  roomX = room.rwidth;
+
+  roomY = room.rheight;
+
+  Room_X.setValue(roomX);
+
+  Room_Y.setValue(roomY);
+
+}
