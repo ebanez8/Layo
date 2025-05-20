@@ -37,6 +37,7 @@ class Room {
     fill(175);
     stroke(50);
     strokeWeight(5);
+    rectMode(CORNER);
     rect((width-rwidth)/2, (height-rheight)/2, rwidth, rheight);
     
     if (showGrid) {

@@ -45,10 +45,22 @@ class Furniture{
     rotate(radians(rotation));
     
     imageMode(CENTER);
-    if (rotation % 180 == 0) {
+    if (rotation == 0 || rotation == 180 || rotation == 360) {
       image(img, 0, 0, widths, heights);
     } else {
-      image(img, 0, 0, heights, widths); // swap dimensions when rotated 90/270
+      image(img, 0, 0, heights, widths);
+    }
+    
+    if (draw_g) {
+      noFill();
+      stroke(0);
+      strokeWeight(1);
+      rectMode(CENTER);
+      if (rotation == 0 || rotation == 180 || rotation == 360) {
+        rect(0, 0, widths, heights);
+      } else {
+        rect(0, 0, heights, widths);
+      }
     }
   
     popMatrix();
