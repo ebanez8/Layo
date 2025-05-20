@@ -60,10 +60,6 @@ public void Delete_Button(GButton source, GEvent event) { //_CODE_:delete_button
   
 } //_CODE_:delete_button:486369:
 
-public void Rotation(GCustomSlider source, GEvent event) { //_CODE_:Rotate_Slider:610432:
-  println("Rotate_Slider - GCustomSlider >> GEvent." + event + " @ " + millis());
-} //_CODE_:Rotate_Slider:610432:
-
 public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
   roomX = source.getValueF();
   room.resize(roomX, roomY);
@@ -94,34 +90,22 @@ public void createGUI(){
   gui.noLoop();
   gui.setActionOnClose(G4P.KEEP_OPEN);
   gui.addDrawHandler(this, "win_draw1");
-  screenshot_button = new GButton(gui, 52, 14, 80, 30);
+  screenshot_button = new GButton(gui, 207, 117, 80, 30);
   screenshot_button.setText("Screenshot");
   screenshot_button.setLocalColorScheme(GCScheme.ORANGE_SCHEME);
   screenshot_button.addEventHandler(this, "Screenshot_Button");
-  grid_button = new GButton(gui, 275, 16, 108, 30);
+  grid_button = new GButton(gui, 206, 76, 108, 30);
   grid_button.setText("Toggle Grid");
   grid_button.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   grid_button.addEventHandler(this, "Grid_Button");
-  FurnitureList = new GDropList(gui, 160, 27, 90, 120, 5, 10);
+  FurnitureList = new GDropList(gui, 30, 48, 90, 120, 5, 10);
   FurnitureList.setItems(loadStrings("list_873779"), 0);
   FurnitureList.addEventHandler(this, "dropList1_click1");
-  delete_button = new GButton(gui, 52, 61, 80, 30);
+  delete_button = new GButton(gui, 320, 74, 80, 30);
   delete_button.setText("Delete");
   delete_button.setLocalColorScheme(GCScheme.RED_SCHEME);
   delete_button.addEventHandler(this, "Delete_Button");
-  Rotate_Slider = new GCustomSlider(gui, 239, 194, 154, 56, "grey_blue");
-  Rotate_Slider.setShowValue(true);
-  Rotate_Slider.setLimits(1, 0, 270);
-  Rotate_Slider.setNbrTicks(4);
-  Rotate_Slider.setStickToTicks(true);
-  Rotate_Slider.setNumberFormat(G4P.INTEGER, 0);
-  Rotate_Slider.setOpaque(true);
-  Rotate_Slider.addEventHandler(this, "Rotation");
-  label1 = new GLabel(gui, 277, 174, 80, 20);
-  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  label1.setText("Rotation");
-  label1.setOpaque(false);
-  Room_X = new GCustomSlider(gui, 48, 185, 136, 44, "grey_blue");
+  Room_X = new GCustomSlider(gui, 31, 106, 136, 44, "grey_blue");
   Room_X.setShowValue(true);
   Room_X.setLimits(600, 100, 800);
   Room_X.setNbrTicks(15);
@@ -129,7 +113,7 @@ public void createGUI(){
   Room_X.setNumberFormat(G4P.INTEGER, 0);
   Room_X.setOpaque(false);
   Room_X.addEventHandler(this, "RoomX");
-  Room_Y = new GCustomSlider(gui, 49, 256, 134, 45, "grey_blue");
+  Room_Y = new GCustomSlider(gui, 32, 176, 134, 45, "grey_blue");
   Room_Y.setShowValue(true);
   Room_Y.setLimits(600, 100, 800);
   Room_Y.setNbrTicks(15);
@@ -137,17 +121,21 @@ public void createGUI(){
   Room_Y.setNumberFormat(G4P.INTEGER, 0);
   Room_Y.setOpaque(false);
   Room_Y.addEventHandler(this, "RoomY");
-  label2 = new GLabel(gui, 72, 166, 80, 20);
+  label2 = new GLabel(gui, 12, 83, 80, 20);
   label2.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label2.setText("Room X");
   label2.setOpaque(false);
-  label3 = new GLabel(gui, 71, 235, 80, 20);
+  label3 = new GLabel(gui, 14, 152, 80, 21);
   label3.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   label3.setText("Room Y");
   label3.setOpaque(false);
-  clear_Button = new GButton(gui, 52, 105, 80, 30);
+  clear_Button = new GButton(gui, 299, 118, 80, 30);
   clear_Button.setText("Clear");
   clear_Button.addEventHandler(this, "Clear_Button");
+  label1 = new GLabel(gui, 29, 27, 97, 20);
+  label1.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  label1.setText("Furniture Library");
+  label1.setOpaque(false);
   gui.loop();
 }
 
@@ -158,10 +146,9 @@ GButton screenshot_button;
 GButton grid_button; 
 GDropList FurnitureList; 
 GButton delete_button; 
-GCustomSlider Rotate_Slider; 
-GLabel label1; 
 GCustomSlider Room_X; 
 GCustomSlider Room_Y; 
 GLabel label2; 
 GLabel label3; 
 GButton clear_Button; 
+GLabel label1; 
