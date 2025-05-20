@@ -177,7 +177,7 @@ void checkOutsideRoom() {
     }
   }
 }
-
+//
 float calculateEmptySpace() {
   roomArea = (room.rwidth / tileSize) * (room.rheight / tileSize);
   float furnitureArea = 0;
