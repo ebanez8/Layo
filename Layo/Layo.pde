@@ -178,7 +178,20 @@ void checkOutsideRoom() {
   while (it.hasNext()) {
     Furniture f = it.next();
     if (!isInsideRoom(f.x, f.y, f.widths, f.heights)) {
+      println(f.widths);
       it.remove();  // safe way to remove during iteration
+    }
+  }
+}
+
+void checkOutsideRoom2() {
+  int i = 0;
+  while (i < furnitureList.size()) {
+    Furniture f = furnitureList.get(i);
+    if (!isInsideRoom(f.x, f.y, f.widths, f.heights)) {
+      furnitureList.remove(i); // Don't increment i, because list shrinks
+    } else {
+      i++; // Only increment if we didn't remove
     }
   }
 }

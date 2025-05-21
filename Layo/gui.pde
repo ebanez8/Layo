@@ -63,13 +63,13 @@ public void Delete_Button(GButton source, GEvent event) { //_CODE_:delete_button
 public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
   roomX = source.getValueF(); // get slider info
   room.resize(roomX, roomY); // set room to new size
-  checkOutsideRoom(); // check if outside of the room
+  checkOutsideRoom2(); // check if outside of the room
 } //_CODE_:Room_X:797839:
 
 public void RoomY(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
   roomY = source.getValueF(); // get slider info
   room.resize(roomX, roomY); // set room to new size
-  checkOutsideRoom(); // check if outside of the room
+  checkOutsideRoom2(); // check if outside of the room
 } //_CODE_:Room_Y:251960:
 
 public void Clear_Button(GButton source, GEvent event) { //_CODE_:clear_Button:353556:
