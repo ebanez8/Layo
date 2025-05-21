@@ -79,15 +79,15 @@ public void Clear_Button(GButton source, GEvent event) { //_CODE_:clear_Button:3
 
 // New save button event handler
 public void Save_Button(GButton source, GEvent event) { //_CODE_:save_button:123456:
-  String filename = filename_field.getText();
-  if (filename.length() > 0) {
+  String filename = filename_field.getText(); //gets text in the textbot
+  if (filename.length() > 0) { // if the text isnt empty savethe layout
     saveLayout(filename);
   }
 } //_CODE_:save_button:123456:
 
 // New load button event handler
 public void Load_Button(GButton source, GEvent event) { //_CODE_:load_button:654321:
-  String filename = filename_field.getText();
+  String filename = filename_field.getText(); // practically same as save
   if (filename.length() > 0) {
     loadLayout(filename);
   }
@@ -151,7 +151,7 @@ public void createGUI(){
   label1.setText("Furniture Library");
   label1.setOpaque(false);
   
-  // Add new save/load UI elements
+  // new save/load UI elements
   save_button = new GButton(gui, 207, 160, 80, 30);
   save_button.setText("Save");
   save_button.setLocalColorScheme(GCScheme.BLUE_SCHEME);
