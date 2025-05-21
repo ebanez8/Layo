@@ -46,6 +46,10 @@ public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:Furnitur
     selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(200, 100, 50), true, imgChair);
   } else if (selectedItem.equals("SBed")) {
     selectedFurniture = new Furniture(0, 0, 75f, 125f, 0, color(255, 200, 0), true, imgSBed);
+  } else if (selectedItem.equals("Plant")) {
+    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(255, 200, 0), true, imgPlant);
+  } else if (selectedItem.equals("Drawer")) {
+    selectedFurniture = new Furniture(0, 0, 150f, 50f, 0, color(255, 200, 0), true, imgDrawer);
   } else {
     return; // Unknown item
   }
@@ -98,7 +102,7 @@ public void createGUI(){
   grid_button.setText("Toggle Grid");
   grid_button.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   grid_button.addEventHandler(this, "Grid_Button");
-  FurnitureList = new GDropList(gui, 30, 48, 90, 120, 5, 10);
+  FurnitureList = new GDropList(gui, 30, 48, 90, 220, 10, 10);
   FurnitureList.setItems(loadStrings("list_873779"), 0);
   FurnitureList.addEventHandler(this, "dropList1_click1");
   delete_button = new GButton(gui, 320, 74, 80, 30);
