@@ -1,94 +1,88 @@
 class Furniture{
-  float widths;
+  float widths;// size of furniture
   float heights;
-  float x;
+  float x; // starting draw point
   float y;
-  int rotation;
-  color col;
-  boolean is_selected;
-  PImage img;
+  int rotation; // degree of rotation
+  boolean is_selected; // if selected
+  PImage img; // image of furniture
   
-  Furniture(float x1, float y1, float w, float h, int r, color c, boolean isSel, PImage img){
+  Furniture(float x1, float y1, float w, float h, int r, boolean isSel, PImage img){
     this.x = x1;
     this.y = y1;
     this.widths =w;
     this.heights = h;
     this.rotation = r;
-    this.col = c;
     this.is_selected = isSel;
     this.img = img;
   }
   void rotateF() {
-    // Rotate angle
+    // angle of rotation
     rotation = (rotation + 90) % 360;
-  
-    // Compute center before changing size
+    // find center to rotate on center axis
     float centerX = x + widths / 2;
     float centerY = y + heights / 2;
-  
-    // Swap width and height
+    // swap width and height
     float temp = widths;
     widths = heights;
     heights = temp;
-  
-    // Recalculate x, y to keep object centered
+    // new x and y to keep object centered
     x = centerX - widths / 2;
     y = centerY - heights / 2;
-    
+    // keep in room
     constrainToRoom(room);
   }
   
   void drawFurniture() {
-    noFill();
-    stroke(0);
+    noFill(); // set outline to basic properties
     strokeWeight(0);
-    if (draw_g){strokeWeight(5);}
-    pushMatrix();
-    translate(x + widths / 2, y + heights / 2);
-    rotate(radians(rotation));
+    pushMatrix(); // save transformation matrix
+    translate(x + widths / 2, y + heights / 2); // move to object's center point
+    rotate(radians(rotation)); // Rotate by specified degrees
     
-    imageMode(CENTER);
-    if (rotation == 0 || rotation == 180 || rotation == 360) {
+    imageMode(CENTER); // draw image from center point
+    if (rotation == 0 || rotation == 180 || rotation == 360) { // set rotation to basic size if 0, 180, 360
       image(img, 0, 0, widths, heights);
-    } else {
+    } else { // rotate sideways  if 90, 270
       image(img, 0, 0, heights, widths);
     }
     
-    if (draw_g) {
-      stroke(0);
-      strokeWeight(1);
-      rectMode(CENTER);
-      if (rotation == 0 || rotation == 180 || rotation == 360) {
+    if (draw_g) { // drawing grid
+      stroke(0); // set line properties to new properties 
+      strokeWeight(1.5);
+      rectMode(CENTER); // draw rectangle from center point
+      if (rotation == 0 || rotation == 180 || rotation == 360) { // set rotation to basic size if 0, 180, 360
         rect(0, 0, widths, heights);
-      } else {
+      } else { // rotate sideways  if 90, 270
         rect(0, 0, heights, widths);
       }
       
     }
   
-    popMatrix();
+    popMatrix(); // restore transformation matrix
   }
   
-  boolean isClicked(float mx, float my) {
+  boolean isClicked(float mx, float my) { // check if mouse is over a furniture when clicked
     return (mx > x && mx < x + widths && my > y && my < y + heights);
   }
   
-  void constrainToRoom(Room room) {
+  void constrainToRoom(Room room) { // keeps furniture in room
     float roomX = (width - room.rwidth) / 2;
     float roomY = (height - room.rheight) / 2;
 
-    // Constrain left and top edges
+    // constrain left and top edges
     if (x < roomX) x = roomX;
     if (y < roomY) y = roomY;
 
-    // Constrain right and bottom edges
+    // constrain right and bottom edges
     if (x + widths > roomX + room.rwidth) x = roomX + room.rwidth - widths;
     if (y + heights > roomY + room.rheight) y = roomY + room.rheight - heights;
   }
-  void moveTo(float newX, float newY) {
+  
+  void moveTo(float newX, float newY) { // move furniture to wherever mouse has moved
     this.x = newX;
     this.y = newY;
-    constrainToRoom(room);
+    constrainToRoom(room); // keep in room
   }
   
   

@@ -19,64 +19,62 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:gui:3
 } //_CODE_:gui:364064:
 
 public void Screenshot_Button(GButton source, GEvent event) { //_CODE_:screenshot_button:805889:
-  saveFrame("Screenshots/Screenshot " + screenshotNum + ".png");
+  saveFrame("Screenshots/Screenshot " + screenshotNum + ".png"); // save screenshot of screen
   screenshotNum++;
 } //_CODE_:screenshot_button:805889:
 
 public void Grid_Button(GButton source, GEvent event) { //_CODE_:grid_button:697262:
-  if (draw_g){draw_g = false;}
-  else{draw_g = true;}
+  if (draw_g){draw_g = false;} // set draw_g to false if true
+  else{draw_g = true;} // set draw_g to true if false
   
 } //_CODE_:grid_button:697262:
 
 public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:FurnitureList:873779:
 
-  String selectedItem = source.getSelectedText();
+  String selectedItem = source.getSelectedText(); // find the selected text in dropdown
 
-  if (selectedItem == null) return;
+  if (selectedItem == null) return; // if nothing then set to null
 
-  if (selectedItem.equals("TBed")) {
-    selectedFurniture = new Furniture(0, 0, 125f, 125f, 0, color(255, 0, 100), true,imgTBed);
-  } else if (selectedItem.equals("Couch")) {
-    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, color(100, 0, 255), true, imgCouch);
-  } else if (selectedItem.equals("Table")) {
-    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, color(0, 255, 50), true, imgTable);
-  } else if (selectedItem.equals("Chair")) {
-    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(200, 100, 50), true, imgChair);
-  } else if (selectedItem.equals("SBed")) {
-    selectedFurniture = new Furniture(0, 0, 75f, 125f, 0, color(255, 200, 0), true, imgSBed);
-  } else if (selectedItem.equals("Plant")) {
-    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, color(255, 200, 0), true, imgPlant);
-  } else if (selectedItem.equals("Drawer")) {
-    selectedFurniture = new Furniture(0, 0, 150f, 50f, 0, color(255, 200, 0), true, imgDrawer);
-  } else {
-    return; // Unknown item
+  if (selectedItem.equals("TBed")) { // create twin bed
+    selectedFurniture = new Furniture(0, 0, 125f, 125f, 0, true,imgTBed);
+  } else if (selectedItem.equals("Couch")) { // create couch
+    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, true, imgCouch);
+  } else if (selectedItem.equals("Table")) { // create table
+    selectedFurniture = new Furniture(0, 0, 150f, 75f, 0, true, imgTable);
+  } else if (selectedItem.equals("Chair")) { // create chair
+    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, true, imgChair);
+  } else if (selectedItem.equals("SBed")) { // create single bed
+    selectedFurniture = new Furniture(0, 0, 75f, 125f, 0, true, imgSBed);
+  } else if (selectedItem.equals("Plant")) { // create plant
+    selectedFurniture = new Furniture(0, 0, 50f, 50f, 0, true, imgPlant);
+  } else if (selectedItem.equals("Drawer")) { // create drawer
+    selectedFurniture = new Furniture(0, 0, 150f, 50f, 0, true, imgDrawer);
   }
 
-  isFurnitureSelected = true;  
+  isFurnitureSelected = true;  // set furniture selected to true
 } //_CODE_:FurnitureList:873779:
 
 public void Delete_Button(GButton source, GEvent event) { //_CODE_:delete_button:486369:
-  if(delete_bool == false){delete_bool = true;}
-  else if (delete_bool){delete_bool = false;}
+  if(delete_bool == false){delete_bool = true;} // set delete to true if false
+  else if (delete_bool){delete_bool = false;} // set delete to false if true
   
 } //_CODE_:delete_button:486369:
 
 public void RoomX(GCustomSlider source, GEvent event) { //_CODE_:Room_X:797839:
-  roomX = source.getValueF();
-  room.resize(roomX, roomY);
-  checkOutsideRoom();
+  roomX = source.getValueF(); // get slider info
+  room.resize(roomX, roomY); // set room to new size
+  checkOutsideRoom(); // check if outside of the room
 } //_CODE_:Room_X:797839:
 
 public void RoomY(GCustomSlider source, GEvent event) { //_CODE_:Room_Y:251960:
-  roomY = source.getValueF();
-  room.resize(roomX, roomY);
-  checkOutsideRoom();
+  roomY = source.getValueF(); // get slider info
+  room.resize(roomX, roomY); // set room to new size
+  checkOutsideRoom(); // check if outside of the room
 } //_CODE_:Room_Y:251960:
 
 public void Clear_Button(GButton source, GEvent event) { //_CODE_:clear_Button:353556:
-  room.clearFurniture();
-  furnitureList.clear();
+  room.clearFurniture(); // clear all furniture from screen
+  furnitureList.clear(); // clear the list with all furniture
 } //_CODE_:clear_Button:353556:
 
 // New save button event handler

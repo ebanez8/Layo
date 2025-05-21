@@ -157,7 +157,7 @@ class Room {
   
       if (img != null) {
   
-        items.add(new Furniture(x, y, w, h, rot, color(200), false, img));
+        items.add(new Furniture(x, y, w, h, rot, false, img));
   
       }
   
