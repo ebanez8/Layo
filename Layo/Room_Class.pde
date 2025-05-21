@@ -60,16 +60,11 @@ class Room {
     // Write each furniture item
     for (Furniture f : items) {
       String type = "";
-      if (f.img == imgTable) type = "Table"; // check what type of furniture it is by comparing img
-  
-      else if (f.img == imgTBed) type = "TBed";
-  
-      else if (f.img == imgChair) type = "Chair";
-  
-      else if (f.img == imgCouch) type = "Couch";
-  
-      else if (f.img == imgSBed) type = "SBed";
-  
+      if (f.img == imgTable) type = "Table"; // check what type of furniture it is by comparing img  
+      else if (f.img == imgTBed) type = "TBed";  
+      else if (f.img == imgChair) type = "Chair";  
+      else if (f.img == imgCouch) type = "Couch";  
+      else if (f.img == imgSBed) type = "SBed";  
       output.println(type + "," + f.x + "," + f.y + "," + f.widths + "," + f.heights + "," + f.rotation);
       // format for when reading using type , x value ,y value, width, height and rotation
     }
@@ -78,29 +73,20 @@ class Room {
     output.close(); // close
   }
   void loadFromFile(String filename) {
-
-    String[] lines = loadStrings("data/" + filename + ".txt");// create array by loading from file
-  
-    if (lines == null || lines.length < 2) return;//if the file doesnt follow the format we dont open it
-  
+    String[] lines = loadStrings("data/" + filename + ".txt");// create array by loading from file 
+    if (lines == null || lines.length < 2) return;//if the file doesnt follow the format we dont open it  
     // Read room dimensions
-    String[] roomDims = split(lines[0], ',');//follows the format
-  
-    rwidth = float(roomDims[0]);//formats
-  
-    rheight = float(roomDims[1]);
-  
-    // Clear existing furniture
-  
+    String[] roomDims = split(lines[0], ',');//follows the format  
+    rwidth = float(roomDims[0]);//formats  
+    rheight = float(roomDims[1]);  
+    // Clear existing furniture  
     items.clear();
     // Read furniture count
     int count = int(lines[1]);
 
     // Read each furniture item
-    for (int i = 0; i < count && i + 2 < lines.length; i++) {
-  
-      String[] parts = split(lines[i + 2], ','); // split at ,
-  
+    for (int i = 0; i < count && i + 2 < lines.length; i++) {  
+      String[] parts = split(lines[i + 2], ','); // split at ,  
       String type = parts[0];
       float x = float(parts[1]); // follows the format for file  fetches all the things we need based on the format
       float y = float(parts[2]);
@@ -108,28 +94,17 @@ class Room {
       float h = float(parts[4]);
       int rot = int(parts[5]);
   
-      // Get image based on type
-  
-      PImage img = null;
-  
-      if (type.equals("Table")){ img = imgTable;}// finds what type of furniture it is based off the img
-  
-      else if (type.equals("TBed")) img = imgTBed;
-  
-      else if (type.equals("Chair")) img = imgChair;
-  
-      else if (type.equals("Couch")) img = imgCouch;
-  
-      else if (type.equals("SBed")) img = imgSBed;
-  
-      if (img != null) {
-  
+      // Get image based on type  
+      PImage img = null;  
+      if (type.equals("Table")){ img = imgTable;}// finds what type of furniture it is based off the img  
+      else if (type.equals("TBed")) img = imgTBed;  
+      else if (type.equals("Chair")) img = imgChair;  
+      else if (type.equals("Couch")) img = imgCouch;  
+      else if (type.equals("SBed")) img = imgSBed;  
+      if (img != null) {  
         items.add(new Furniture(x, y, w, h, rot, false, img)); // adds to the items, and creates new furniture based off it ,if there is a img
   
       }
-  
     }
-  
   }
-
 }
