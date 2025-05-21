@@ -19,7 +19,7 @@ int tileSize = 25;
 int gridX, gridY;
 boolean isFurnitureSelected = false;  
 Furniture selectedFurniture = null;  // To store the selected furniture
-PImage imgTable, imgTBed, imgChair, imgCouch, imgSBed;
+PImage imgTable, imgTBed, imgChair, imgCouch, imgSBed, imgPlant, imgDrawer;
 
 void setup(){
   room = new Room(roomX, roomY);
@@ -35,6 +35,8 @@ void setup(){
   imgChair = loadImage("Chair.png");
   imgCouch = loadImage("Couch.png");
   imgSBed = loadImage("SBed.png");
+  imgPlant = loadImage("Plant.png");
+  imgDrawer = loadImage("Drawer.png");
 }
 
 void draw() {
@@ -46,7 +48,6 @@ void draw() {
     f.drawFurniture();
   }
   
-  // Draw red outline on top of furniture if colliding
   for (Furniture f : furnitureList) {
     boolean hasCollision = false;
     for (Furniture other : furnitureList) {
@@ -57,13 +58,11 @@ void draw() {
     }
   
     if (hasCollision && f != selected) {
-      pushMatrix();
       stroke(255, 0, 0);
       strokeWeight(3);
       noFill();
       rectMode(CORNER);
       rect(f.x, f.y, f.widths, f.heights);
-      popMatrix();
     }
   }
 }
