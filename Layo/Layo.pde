@@ -2,6 +2,7 @@
 LayoutManager layoutManager;
 import g4p_controls.*;
 import java.awt.Font;
+import java.util.Iterator;
 boolean delete_bool = false;
 boolean draw_g = true;
 float roomX = 600;
@@ -20,6 +21,7 @@ int gridX, gridY;
 boolean isFurnitureSelected = false;  
 Furniture selectedFurniture = null;  // To store the selected furniture
 PImage imgTable, imgTBed, imgChair, imgCouch, imgSBed, imgPlant, imgDrawer;
+int screenshotNum = 1;
 
 void setup(){
   room = new Room(roomX, roomY);
@@ -172,10 +174,11 @@ boolean isInsideRoom(float x, float y, float w, float h) {
 }
 
 void checkOutsideRoom() {
-  for (int i = furnitureList.size() - 1; i >= 0; i--) {
-    Furniture f = furnitureList.get(i);
+  Iterator<Furniture> it = furnitureList.iterator();
+  while (it.hasNext()) {
+    Furniture f = it.next();
     if (!isInsideRoom(f.x, f.y, f.widths, f.heights)) {
-      furnitureList.remove(i);
+      it.remove();  // safe way to remove during iteration
     }
   }
 }

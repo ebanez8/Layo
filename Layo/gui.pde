@@ -19,7 +19,8 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:gui:3
 } //_CODE_:gui:364064:
 
 public void Screenshot_Button(GButton source, GEvent event) { //_CODE_:screenshot_button:805889:
-  println("screenshot_button - GButton >> GEvent." + event + " @ " + millis());
+  saveFrame("Screenshots/Screenshot " + screenshotNum + ".png");
+  screenshotNum++;
 } //_CODE_:screenshot_button:805889:
 
 public void Grid_Button(GButton source, GEvent event) { //_CODE_:grid_button:697262:
