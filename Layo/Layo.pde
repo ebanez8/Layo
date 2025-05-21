@@ -103,11 +103,12 @@ void mousePressed() {
     }
   }
 
-  for (Furniture f : furnitureList) {
+  for (int i = furnitureList.size() - 1; i >= 0; i--) {
+    Furniture f = furnitureList.get(i);
     if (f.isClicked(mouseX, mouseY)) {
       if (delete_bool == true){
-        print("deleted");
-        furnitureList.remove(f);
+        println("deleted");
+        furnitureList.remove(i);
         delete_bool = false;
         break;
       }
@@ -171,14 +172,14 @@ boolean isInsideRoom(float x, float y, float w, float h) {
 }
 
 void checkOutsideRoom() {
-  for (int i = 0; i < furnitureList.size(); i--) {
+  for (int i = furnitureList.size() - 1; i >= 0; i--) {
     Furniture f = furnitureList.get(i);
     if (!isInsideRoom(f.x, f.y, f.widths, f.heights)) {
       furnitureList.remove(i);
     }
   }
 }
-//
+
 float calculateEmptySpace() {
   roomArea = (room.rwidth / tileSize) * (room.rheight / tileSize);
   float furnitureArea = 0;
