@@ -10,10 +10,6 @@ class Room {
     showGrid = false;
   }
 
-  void addFurniture(Furniture f) { // add furniture to arraylist
-    items.add(f);
-  }
-
   void clearFurniture() {
     items.clear();  // removes all furniture
   }
