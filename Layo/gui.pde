@@ -27,11 +27,9 @@ public void Grid_Button(GButton source, GEvent event) { //_CODE_:grid_button:697
   if (draw_g){draw_g = false;}
   else{draw_g = true;}
   
-  println("grid_button - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:grid_button:697262:
 
 public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:FurnitureList:873779:
-  println("FurnitureList - GDropList >> GEvent." + event + " @ " + millis());
 
   String selectedItem = source.getSelectedText();
 
@@ -59,8 +57,7 @@ public void dropList1_click1(GDropList source, GEvent event) { //_CODE_:Furnitur
 } //_CODE_:FurnitureList:873779:
 
 public void Delete_Button(GButton source, GEvent event) { //_CODE_:delete_button:486369:
-  println("delete_button - GButton >> GEvent." + event + " @ " + millis());
-  if(delete_bool == false){delete_bool = true;print(true);}
+  if(delete_bool == false){delete_bool = true;}
   else if (delete_bool){delete_bool = false;}
   
 } //_CODE_:delete_button:486369:
